@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		  <link rel="stylesheet" type="text/css" href="css/base.css"/>
+		<title></title>
+		<style type="text/css">
+			 .scroll1{
+        width: 300px;
+        height: 150px;
+        margin: 20px;
+        overflow: hidden;
+      }
+      .scroll1 li{
+        height: 150px;
+        text-align: center;
+        background: gold;
+        line-height: 150px;
+      }
+      		</style>
+	</head>
+	<body>
+	  <div class="scroll1" id="scroll0">
+	  	<ul>
+	  		<li>111</li>
+	  		<li>222</li>
+	  		<li>333</li>
+	  		<li>444</li>
+	  		<li>555</li>
+	  		<li>666</li>
+	  	</ul>
+	  </div>
+	  <script src="js/jquery-1.12.2.min.js" type="text/javascript" charset="utf-8"></script>
+	  <script type="text/javascript">
+//	  	var index = 0;
+//	  var ul = $("ul")
+//	  	function fun(){
+//	  	  $("li").eq(index).slideUp();
+//	  	  if(index <= 5 ){
+//	  	   index++;
+//	  	   }else{
+//	  	     index = 0;
+//	  	   }
+//	  	 }
+//	  	fun()
+//setTimeout( function(){$("li").eq(index).slideUp(1000);}
+//               ,1000);
+  
+	  function fun(){
+	    this.ul = $("#scroll0").find("ul")
+//	    console.log(this.ul);
+     this.liHeight = this.ul.find("li").height();
+     this.index = 0
+     this.length = this.ul.find("li").length
+     
+     
+     
+     this.move = function(){
+       this.first = this.ul.find("li:first")
+       this.index++ 
+//     if(this.index == this.length){
+//       this.index = 0
+//     }
+//     
+       this.ul.find("li:last").after(this.first.clone())
+       
+       this.ul.animate({
+       marginTop:-this.liHeight*this.index
+     })
+//     this.ul.find("li").eq(this.index-1).animate({
+//       marginTop:this.liHeight*6
+//     })
+       var _this = this
+       setTimeout(function(){   
+       this.first.remove();
+       this.ul.css('top', 0);
+         _this.move()
+       },1000)
+     }
+     this.move()
+     
+     
+    
+     
+     }
+	  var mo = new fun()
+	  
+	  	
+	  	
+	  	
+	  	
+//	      function Scroll(param){
+//      this.ul = $("#"+param.id).find('ul');
+//      this.liHeight = this.ul.find('li').height();
+//      this.time = 3000;
+//      this.index = 0;
+//      var liLength = this.ul.find('li').length;
+//      
+//            this.move = function(){
+//              //计算索引
+//              this.index++;
+//              if(this.index == liLength){
+//                this.index = 0;
+//              }
+//              
+//              
+//              //滑动
+//              this.ul.animate({
+//                marginTop:-this.liHeight*this.index
+//              })
+//              //定时器
+//              var _this = this
+//              setTimeout(function(){
+//                _this.move();
+//              },this.time)
+//              
+//              
+//            }
+//            this.move();
+//    }
+//    
+//    var scroll = new Scroll({
+//      id:'scroll0'
+//    });
+
+
+
+
+	  </script>
+	</body>
+</html>
